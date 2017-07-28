@@ -23,15 +23,26 @@
     return "unknown";
 	}
 	
+	function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
+	var paramVal = getParameterByName('id');
 	// find operating system
 	if(getMobileOperatingSystem() == "iOS"){
-		window.location = "nyfw://app";
+		window.location = "nyfw://app?id="+paramVal;
+		
+		document.write(paramVal);
 	}
   </script>
   
  </head>
  <body>
-  <h1>Product 12345</h1>
-  <p>This could be a page about Product 12345</p>
+  <h1 id="h1data" ></h1>
  </body>
 </html>
