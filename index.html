@@ -47,7 +47,7 @@
 	}
 	
 	// Anroid
-	if(getMobileOperatingSystem() == "Android"){
+	else if(getMobileOperatingSystem() == "Android"){
 		
 		// Redirect to playstore
 		document.write("Android");
@@ -55,8 +55,8 @@
 	}
 	
 	// Other
-	if(getMobileOperatingSystem() != "Android" || getMobileOperatingSystem() == "iOS"){
-		
+	//if(getMobileOperatingSystem() != "Android" || getMobileOperatingSystem() == "iOS"){
+	else{	
 		// Redirect to landing page for anyother OS
 		document.write("Unknown");
 		
