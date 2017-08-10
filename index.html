@@ -1,21 +1,22 @@
 <html>
  <head>
-  <title>Product 12345</title>
-  <meta property="al:android:url" content="example://products?id=12345" />
+  <title>NYFW</title>
+  <!--<meta property="al:android:url" content="nyfw://article?id=12345" />
+  <meta property="al:ios:url" content="nyfw://article?id=12345" />-->
   <script type="text/javascript" >
 	function getMobileOperatingSystem() {
 	var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-      // Windows Phone must come first because its UA also contains "Android"
-    if (/windows phone/i.test(userAgent)) {
-        return "Windows Phone";
-    }
+    
+    //if (/windows phone/i.test(userAgent)) {
+    //    return "Windows Phone";
+    //}
 
     if (/android/i.test(userAgent)) {
         return "Android";
     }
 
-    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    
     if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
         return "iOS";
     }
@@ -24,21 +25,44 @@
 	}
 	
 	function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+		if (!url) url = window.location.href;
+		name = name.replace(/[\[\]]/g, "\\$&");
+		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, " "));
 	}
+	
+	
 	var paramVal = getParameterByName('id');
-	// find operating system
+	
+	// IOS
 	if(getMobileOperatingSystem() == "iOS"){
-		window.location = "nyfw://app?id="+paramVal;
+		//window.location = "nyfw://article?id="+paramVal;  //Local app launch
 		
-		document.write(paramVal);
+		// Check if redirect fails then redirect to app store
+		document.write("IOS");
+		
 	}
+	
+	// Anroid
+	if(getMobileOperatingSystem() == "Android"){
+		
+		// Redirect to playstore
+		document.write("Android");
+		
+	}
+	
+	// Other
+	if(getMobileOperatingSystem() != "Android" || getMobileOperatingSystem() == "iOS"){
+		
+		// Redirect to landing page for anyother OS
+		document.write("Unknown");
+		
+	}
+	
+	
   </script>
   
  </head>

@@ -3,11 +3,11 @@
         "apps": [],
         "details": [
             {
-                "appID": "9JA89QQLNQ.com.apple.wwdc",
+                "appID": "9JA89QQLNQ.com.apple.nyfw",
                 "paths": [ "/applink/", "/applink/*"]
             },
             {
-                "appID": "ABCD1234.com.apple.wwdc",
+                "appID": "ABCD1234.com.apple.nyfw",
                 "paths": [ "*" ]
             }
         ]
